@@ -16,7 +16,7 @@ node integration.js
 
 # Used in the following research projects
 
-- Digital Forensics Analysis 
+- [Enhancing credibility of digital evidence through provenance-based incident response handling (2019)](https://www.researchgate.net/publication/334331057_Enhancing_credibility_of_digital_evidence_through_provenance-based_incident_response_handling?_sg=FHOPZtzk5nYTzxzCyZHNG1RVBXvlwfLiCA7nnPG5taCiGzwn7eUtNPClCaBxlSc1Q3JZuYhsjcTQpBaSLmdfEnEcK665WXGkGAJ04Fjh.rUu_IDPn8mDQVFybh95MZOP38Y4M_NRVaqhfgs8dTPYeiDEdVMqFEAFVyq3_dYIwzaVGIxu4sCzf6GMEW27OaQ)
 
 
 # Next steps
