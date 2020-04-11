@@ -21,7 +21,7 @@ sudo apt install mongo-tools
 
 It is assumed that your provenacne data (from [Camflow](http://camflow.org/)) is published to a MQTT Message Broker.
 
-The following command subscribes to a topic and sends every entry to a Mongo DB
+The following command subscribes to a topic and sends every entry to a Mongo DB collection
 ```
 sh mqttToMongo
 ```
@@ -40,7 +40,6 @@ node integration.js
 # Next steps
 
 * Add "CamFlow/cytoscape.js-prov" as a sub-module to benefit from further developments
-* Add Message Broker for sending provenance data to the MongoDB
 * Address performance issues during the network parsing in node.js
 
 # Authors of this extension
