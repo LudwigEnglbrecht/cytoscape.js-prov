@@ -87,7 +87,7 @@ async.waterfall([
 	// save network
   function saveNetwork(){
     // save network in document
-    fs.appendFileSync('./networks/cyto_network_'+new Date().toISOString() +'.json', JSON.stringify(cy.json()), function(err){
+    fs.appendFileSync('./networks_output/cyto_network_'+new Date().toISOString() +'.json', JSON.stringify(cy.json()), function(err){
                           if(err) throw err;
                         });
     console.log('Network saved.')
