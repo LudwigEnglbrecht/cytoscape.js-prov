@@ -1,0 +1,3 @@
+[submodule "cytoscape.js-prov"]
+	path = cytoscape.js-prov
+	url = https://github.com/CamFlow/cytoscape.js-prov
