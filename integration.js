@@ -44,6 +44,7 @@ async.waterfall([
       const database = client.db('Import');
       // collection with 2495 objects: mqtt
       // collection with 200 objects: provenance
+	  // TODO: define collection
       const collection = database.collection('provenance');
       console.log('Connected to DB: '+ database.databaseName +
                   ', in Collection: '+ collection.collectionName);
