@@ -17,6 +17,13 @@ Install Mongo tools to be able to use the Mongo import:
 sudo apt install mongo-tools
 ```
 
+Install NodeJS to load data from a MongoDB and perform the transformation
+```
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install npm
+```
+
 ## Usage
 
 It is assumed that your provenacne data (from [Camflow](http://camflow.org/)) is published to a MQTT Message Broker.
