@@ -1,0 +1,2 @@
+#batchSize 1 bedeutet, das nicht gebuffert wird, den Befehl nur zu Testzwecken setzen!
+mosquitto_sub -h localhost -t "/transformed/1" | mongoimport --host localhost:27017 --db Import --collection mqtt --batchSize 1

@@ -1,0 +1,4 @@
+docker start mongotest
+docker start testneo4j
+mongo-connector -m  localhost:27017 -t http://localhost:7474/db/data -d neo4j_doc_manager
+
