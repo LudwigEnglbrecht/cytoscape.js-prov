@@ -13,15 +13,15 @@ To achieve the transformation the structure of the source code of cytoscape.js-p
 
 The workflow of this extension is as follows:
 
-- System 1 and/or System 2 are using Camflow and are configured to publish provenance-data via MQTT to a message broker. This is illustrated with (a) in the figure above. 
+- System 1 and/or System 2 are using Camflow and are configured to publish provenance-data via MQTT to a message broker. This is illustrated as (a) in the figure above. 
 
-- Since the province-data is published as a base64 string we added the NodeJS script “msg_converter.js” to the workflow. This script subscribes to a provenance topic (e.g.: /camflow/provenance/1) to receive the provenance-data of one system, converts it to a valid JSON-String and publish it at another topic (e.g.: /converted/1). This step is show in the above figure as (b).
+- Since the provenance-data is published as a base64 string we added the NodeJS script “msg_converter.js” to the workflow. This script subscribes to a provenance topic (e.g.: /camflow/provenance/1) to receive the provenance-data of a system, converts it to a valid JSON-String and publish it at another topic (e.g.: /converted/1). This step is show in the above figure as (b).
 
-- The bash script “mqttToMongo” (see (c) in the figure) starts **mosquitto_sub** (a simple MQTT client) that subscribes to the topic containing the valid JSON-string of the provenance data (e.g.: /converted/1). This bash script also uses the tool **mongoimport** to import every JSON Object into a MongoDB collection continuously.
+- The bash script “mqttToMongo” (see (c) in the figure above) starts **mosquitto_sub** (a simple MQTT client) that subscribes to the topic containing the valid JSON-string of the provenance data (e.g.: /converted/1). This bash script also uses the tool **mongoimport** to continuously import every JSON object into a MongoDB collection.
 
-- The NodeJS script “integration.js” connect to a MongoDB and loads **all** data from a collection and builds a network using cytoscape.js. 
+- The NodeJS script “integration.js” connects to a MongoDB, loads **all** data from a collection and builds a network using cytoscape.js. 
 
-- After the network has been fully loaded it is saved as a network (e) useable for the Desktop-Version of Cytoscape.
+- After the network has been fully loaded it is saved as a network (e) that is useable for the Desktop-Version of Cytoscape.
 
 
 
