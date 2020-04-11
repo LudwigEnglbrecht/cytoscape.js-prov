@@ -9,7 +9,7 @@ Within the scope of this implementation, a program was created, which integrated
 
 To achieve the transformation the structure of the source code of cytoscape.js-prov was analyzed. Thereby it was possible to select the functionalities that are important for the integrated design from the source code into the new architecture. Since a large part of the code of the prototype was used for the visualization of the provenance graphs, the program code has been shortened. A visual representation is not provided in this version.
 
-### The workflow of the transformation
+### Workflow of the transformation
 
 The workflow of this extension is as follows:
 
