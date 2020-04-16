@@ -61,12 +61,14 @@ node integration.js
 
 # Next steps
 
+* Evaluate [CytoSQL](https://apps.cytoscape.org/apps/cytosql) for retrieving data directly from the MongoDB
 * Incorporate "CamFlow/cytoscape.js-prov" as a sub-module to benefit from further developments
 * Address performance issues during the network parsing in node.js
 
 # Authors of this extension
 
 - Philipp Schwabenbauer
+- Philipp Meinlschmidt
 - Ludwig Englbrecht
 
 Feel free to contact Mr. Ludwig Englbrecht via ludwig.englbrecht@wiwi.uni-regensburg.de for improvements or questions.
