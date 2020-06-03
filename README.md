@@ -21,7 +21,7 @@ The workflow of this extension is as follows:
 
 - The NodeJS script “integration.js” connects to a MongoDB, loads **all** data from a collection and builds a network using cytoscape.js. 
 
-- After the network has been fully loaded it is saved as a network (e) that is useable for the Desktop-Version of Cytoscape.
+- After the network has been fully loaded it is saved as a network (e) that is useable for the Desktop-Version of Cytoscape. This enables a feature-rich analysis of the provenance graph in Cytoscape.
 
 
 
@@ -32,18 +32,39 @@ Install Mongo tools to be able to use the Mongo import:
 sudo apt install mongo-tools
 ```
 
-Install NodeJS to load data from a MongoDB and perform the transformation
+Install NodeJS to load data from a MongoDB and perform the transformation:
 ```
 sudo apt-get update
 sudo apt-get install nodejs
 sudo apt-get install npm
 ```
 
+Install necessary packages for the NodeJS environment:
+```
+npm install async --save
+npm install jsdom --save
+npm install jquery --save
+npm install cytoscape --save
+npm install cytoscape-dagre --save
+npm install mongodb --save
+```
+
+Clone the project:
+```
+git clone https://github.com/LudwigEnglbrecht/cytoscape.js-prov_nodejs
+```
+
+Edit the connection details according to your MongoDB:
+```
+cd cytoscape.js-prov_nodejs
+nano integration.js
+```
+
 ## Usage
 
 It is assumed that your provenacne data (from [Camflow](http://camflow.org/)) is published to a MQTT Message Broker.
 
-The following command subscribes to a topic and sends every entry to a Mongo DB collection
+The following command subscribes to a topic and sends every entry to a Mongo DB collection:
 ```
 sh mqttToMongo
 ```
@@ -61,9 +82,9 @@ node integration.js
 
 # Next steps
 
-* Evaluate [CytoSQL](https://apps.cytoscape.org/apps/cytosql) for retrieving data directly from the MongoDB
+* Evaluate [CytoSQL](https://apps.cytoscape.org/apps/cytosql) for retrieving data directly from the MongoDB (not possible since CytoSQL does not support Cytoscape 3)
 * Incorporate "CamFlow/cytoscape.js-prov" as a sub-module to benefit from further developments
-* Address performance issues during the network parsing in node.js
+* Address performance issues during the network parsing in NodeJS
 
 # Authors of this extension
 
