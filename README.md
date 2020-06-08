@@ -54,7 +54,7 @@ Clone the project:
 git clone https://github.com/LudwigEnglbrecht/cytoscape.js-prov_nodejs
 ```
 
-Edit the connection details according to your MongoDB:
+Edit the connection details according to your MongoDB database and specify your query:
 ```
 cd cytoscape.js-prov_nodejs
 nano integration.js
@@ -70,9 +70,9 @@ sh mqttToMongo
 ```
 
 
-Load all data from a MongoDB collection and save the cytoscype network in "./networks/cyto_network_TIMESTAMP.json"
+To load all data from a MongoDB collection and save the cytoscype network in "./networks/cyto_network_TIMESTAMP.json" run the following command:
 ```
-node integration.js
+node --max-old-space-size=6096   --no-force-async-hooks-checks integration.js
 ```
 
 # Used in the following research projects
@@ -82,9 +82,7 @@ node integration.js
 
 # Next steps
 
-* Evaluate [CytoSQL](https://apps.cytoscape.org/apps/cytosql) for retrieving data directly from the MongoDB (not possible since CytoSQL does not support Cytoscape 3)
 * Incorporate "CamFlow/cytoscape.js-prov" as a sub-module to benefit from further developments
-* Address performance issues during the network parsing in NodeJS
 
 # Authors of this extension
 
