@@ -29,7 +29,7 @@ eval(fs.readFileSync('./res/cytoscape-prov-menu.js')+'');
 // mongoDB connection
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
-const connectionString = 'mongodb://localhost:27017';
+const connectionString = 'mongodb://192.168.178.43:27017';
 var gl_client;
 
 async.waterfall([
@@ -45,7 +45,7 @@ async.waterfall([
       // collection with 2495 objects: mqtt
       // collection with 200 objects: provenance
 	  // TODO: define collection
-      const collection = database.collection('provenance');
+      const collection = database.collection('mqtt');
       console.log('Connected to DB: '+ database.databaseName +
                   ', in Collection: '+ collection.collectionName);
       cb(null, collection);
@@ -54,24 +54,37 @@ async.waterfall([
   // load all entries from database
   function getAllObjects(collection, cb){
     // set query parameters
-    var query = {};
-    collection.find(query,cb);
+    var query = {  };
+	var options = {
+    "limit": 4000,
+    "skip": 22000,
+    "sort": [['_id','desc']] // asc oder desc
+	};
+	
+	// var mysort = {_id:1};  
+    collection.find(query,options,cb);
   },
   // get data from the entries
   function getData(entries, cb){
     var array = [];
 
+	// console.log(entries);
+
+	
+	
     entries.each((err,data)=>{
       if(err) return cb(err);
       if(data == null){
         gl_client.close();
         return cb(null, array);
       }
-      array.push(JSON.stringify(data));
+	  // console.log(JSON.stringify(data));
+      array.unshift(JSON.stringify(data)  );
     });
   },
 	// create network
   function parseData(data, cb){
+	  console.log( data.length);
     for(var i = 0; i < data.length; i++){
       try{
       cy.prov_json().parse(data[i]);
