@@ -4,6 +4,7 @@
 	var tryNodeAgain = new Array();
 	var tryEdgeAgain = new Array();
 	var json = {};
+	var counter = 0; // counter for periodical retry od node and edge insert
 
 	// registers the extension on a cytoscape lib ref
 	var register = function (cytoscape) {
@@ -212,10 +213,16 @@
 
 						parse_messages(data.message);
 
+						counter = counter + 1;
 						//	try nodes that could not be inserted earlier
-						node_again();
+						//node_again();
 						//	try edges that could not be inserted earlier
-						edge_again();
+						//edge_again();
+						
+						if(counter == 3998 || counter == 3999 ){  // Please adjust TODO: improve this
+							node_again();
+							edge_again();
+						}
 
 						parse_edges(data.wasGeneratedBy, cy.prov_core().wasGeneratedBy, 'prov:entity', 'prov:activity');
 
@@ -251,12 +258,12 @@
 											'prov:after',
 											'prov:key-entity-set');
 						cy.endBatch();
-						console.log('Unmatched edge :'+tryEdgeAgain.length);
+						// console.log('Unmatched edge :'+tryEdgeAgain.length);
 						tryEdgeAgain.forEach(function(element) {
-							console.log(element);
+							// console.log(element);
 						});
-						console.log('Unmatched edge :'+tryEdgeAgain.length);
-						cy.prov_core().draw();
+						// console.log('Unmatched edge :'+tryEdgeAgain.length);
+						//cy.prov_core().draw();
 					}
 				};
 			}
